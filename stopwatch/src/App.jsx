@@ -1,38 +1,10 @@
-import { useState, useRef } from "react";
-import "./App.css";
+import Stopwatch from "./Components/stopWatch";
+import "../src/Components/style.css";
 
-function App() {
-  const [time, setTime] = useState(0);
-  let timeRef = useRef(null);
-
-  function startTime() {
-    timeRef.current = setInterval(() => {
-      setTime((time) => time + 1);
-    }, 1000);
-  }
-  function stopTime() {
-    clearInterval(timeRef.current);
-    timeRef.current = null;
-  }
-  function resetTime() {
-    stopTime();
-    setTime(0);
-  }
-
+export default function App() {
   return (
-    <>
-      <div>
-        <h2>StopWatch:{time} seconds</h2>
-        <button onClick={startTime}>Start</button>
-        <br />
-        <br />
-        <button onClick={stopTime}>Stop</button>
-        <br />
-        <br />
-        <button onClick={resetTime}>Reset</button>
-      </div>
-    </>
+    <div className="App">
+      <Stopwatch />
+    </div>
   );
 }
-
-export default App;
